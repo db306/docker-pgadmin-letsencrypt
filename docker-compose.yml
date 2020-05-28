@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+    pgadmin:
+        container_name: ${CONTAINER_NAME}
+        image: dpage/pgadmin4:latest
+        environment:
+            PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+#            PGADMIN_ENABLE_TLS: ${PGADMIN_ENABLE_TLS}
+            PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION: ${PGADMIN_CONFIG_ENHANCED_COOKIE_PROTECTION}
+            VIRTUAL_HOST: ${DOMAINS}
+            LETSENCRYPT_HOST: ${DOMAINS}
+            LETSENCRYPT_EMAIL: ${LETSENCRYPT_EMAIL}
+#            PGADMIN_LISTEN_PORT: 80
+#        volumes:
+#            - ${PGADMIN_SSL_CERTIFICATE}:/certs/server.cert
+#            - ${PGADMIN_SSL_KEY}:/certs/server.key
+networks:
+    default:
+        external:
+            name: ${NETWORK}
